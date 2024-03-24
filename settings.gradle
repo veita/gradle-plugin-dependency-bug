@@ -1,0 +1,5 @@
+
+rootProject.name = 'gradle-plugin-dependency-bug'
+
+include 'sub-a'
+include 'sub-b'

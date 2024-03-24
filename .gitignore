@@ -1,0 +1,11 @@
+.settings/
+.project
+.classpath
+.idea/
+.vscode/
+.gradle/
+bin/
+build/
+
+*.swp
+

@@ -1,0 +1,41 @@
+// sub-b
+
+plugins {
+	id 'application'
+	id 'org.owasp.dependencycheck' version '9.0.10'
+}
+
+apply plugin: 'org.owasp.dependencycheck'
+
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.+'
+}
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+
+dependencyCheck {
+	format = 'ALL'
+	nvd {
+		apiKey = nvdApiKey
+	}
+	analyzers {
+		artifactory {
+			parallelAnalysis = false
+		}
+		ossIndex {
+			enabled = false
+		}
+		assemblyEnabled = false
+	}
+}
+

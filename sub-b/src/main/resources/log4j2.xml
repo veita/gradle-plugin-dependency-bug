@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT" ignoreExceptions="false">
+      <PatternLayout>
+        <pattern>%-5p %d{ISO8601}{UTC}Z - %c[%t]%n %m%n</pattern>
+       </PatternLayout>
+    </Console>
+
+    <!-- File appender configuration (daily rotation) -->
+    <RollingFile name="DailyFile" fileName="log/log4j2.log" filePattern="work/log4j2.log.%d{yyyy-MM-dd}">
+        <PatternLayout>
+            <pattern>%-5p %d{ISO8601} - %c[%t]%n %m%n</pattern>
+        </PatternLayout>
+        <TimeBasedTriggeringPolicy interval="1"/>
+        <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+    </RollingFile>
+  </Appenders>
+  <Loggers>
+    <Root level="INFO">
+      <AppenderRef ref="Console"/>
+    </Root>
+  </Loggers>
+</Configuration>
